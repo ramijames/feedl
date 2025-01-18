@@ -16,8 +16,12 @@
     "electron:build": "electron-builder"
   },
   "dependencies": {
+    "@nuxtjs/axios": "^5.13.6",
+    "@nuxtjs/pwa": "^3.3.5",
     "electron-updater": "^6.3.9",
     "nuxt": "^3.15.2",
+    "sequelize": "^6.37.5",
+    "sqlite3": "^5.1.7",
     "vue": "latest",
     "vue-router": "latest"
   },
