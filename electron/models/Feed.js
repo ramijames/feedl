@@ -2,17 +2,6 @@ import { DataTypes } from 'sequelize';
 import sequelize from '../database.js';
 
 const Feed = sequelize.define('Feed', {
-  /* 
-    Title
-    Link
-    Description
-    Language
-    Copyright
-    itunes:author
-    itunes:explicit (yes, no, clean)
-    itunes:image
-    itunes:category
-  */
   title: {
     type: DataTypes.STRING,
     allowNull: false,
