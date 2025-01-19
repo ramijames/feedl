@@ -60,3 +60,7 @@ app.on('activate', () => {
 ipcMain.handle('feed:add', async (event, { link, title }) => {
   return await Feed.create({ link, title })
 });
+
+ipcMain.handle('feed:all', async (event) => {
+  return await Feed.findAll();
+});
