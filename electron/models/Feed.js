@@ -1,5 +1,8 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../database.js';
+import RSSParser from 'rss-parser';
+
+const parser = new RSSParser();
 
 const Feed = sequelize.define('Feed', {
   title: {
@@ -46,8 +49,14 @@ Feed.delete = async (id) => {
   });
 };
 
-Feed.parse = async (feedUrl) => {
-  // We'll be getting a feed from a URL
+Feed.parse = async (url) => {
+  try {
+    const feed = await parser.parseURL(url);
+    console.log('Feed parsed:', feed);
+    return feed;
+  } catch (error) {
+    throw new Error(`Failed to parse feed: ${error.message}`);
+  }
 };
 
 export default Feed;

@@ -70,5 +70,6 @@ ipcMain.handle('feed:delete', async (event, id) => {
 });
 
 ipcMain.handle('feed:parse', async (event, feedUrl) => {
+  console.log('parsing feed:', feedUrl);
   return await Feed.parse(feedUrl);
 });

@@ -1,6 +1,6 @@
 <template>
   <main id="app">
-    <input type="text" v-model="rssFeedUrl" placeholder="Feed URL" class="form-input">
+    <input type="text" v-model="rssFeedUrl" placeholder="Feed URL" class="form-input" @change="populateNewFeed">
     <pre>{{ newFeed }}</pre>
     <button @click="addFeed">Add Feed</button>
     <hr>
@@ -70,14 +70,19 @@ async function populateNewFeed() {
   // 3. extract the title and description
   // 4. set newFeed to the title and description
 
+  console.log('rssFeedUrl:', rssFeedUrl.value)
+
   try {
     if (!window?.api?.parseFeed) {
       console.error('API not available')
       return
     }
-    const feed = await window.api.parseFeed(rssFeedUrl)
+    const feed = await window.api.parseFeed(rssFeedUrl.value)
     console.log('Feed parsed successfully:', feed)
-    newFeed.value = feed
+    newFeed.value = {
+      title: feed.title,
+      description: feed.description
+    }
   } catch (error) {
     console.error('Failed to parse feed:', error)
   }
