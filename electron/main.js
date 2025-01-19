@@ -64,3 +64,7 @@ ipcMain.handle('feed:add', async (event, { link, title }) => {
 ipcMain.handle('feed:all', async (event) => {
   return await Feed.findAll();
 });
+
+ipcMain.handle('feed:delete', async (event, id) => {
+  return await Feed.destroy({ where: { id } });
+});

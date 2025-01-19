@@ -40,4 +40,10 @@ const Feed = sequelize.define('Feed', {
   },
 });
 
+Feed.delete = async (id) => {
+  return await Feed.destroy({
+    where: { id }
+  });
+};
+
 export default Feed;

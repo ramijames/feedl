@@ -3,17 +3,16 @@
     <button @click="addFeed">Add Feed</button>
     <div v-if="feeds">
       <h2>Feeds</h2>
-      <ul>
-        <li v-for="feed in feeds" :key="feed.id">
-          {{ feed.dataValues.title }}
-        </li>
-      </ul>
+      <div v-for="feed in feeds" :key="feed.id">
+        {{ feed.dataValues.id }} - {{ feed.dataValues.title }} <button @click="deleteFeed(feed.dataValues.id)">Delete</button>
+      </div>
     </div>
   </main>
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
+
+const feeds = ref(null)
 
 async function addFeed() {
   try {
@@ -29,8 +28,6 @@ async function addFeed() {
   }
 }
 
-const feeds = ref(null)
-
 async function getFeeds() {
   try {
     if (!window?.api?.getFeeds) {
@@ -40,6 +37,20 @@ async function getFeeds() {
     feeds.value = await window.api.getFeeds()
   } catch (error) {
     console.error('Failed to get feeds:', error)
+  }
+}
+
+async function deleteFeed(id) {
+  try {
+    if (!window?.api?.deleteFeed) {
+      console.error('API not available')
+      return
+    }
+    await window.api.deleteFeed(id)
+    console.log('Feed deleted successfully:', id)
+    await getFeeds()
+  } catch (error) {
+    console.error('Failed to delete feed:', error)
   }
 }
 
