@@ -19,7 +19,13 @@ const feeds = ref(null)
 const rssFeedUrl = ref('')
 const newFeed = ref({
   title: '',
-  description: ''
+  link: '',
+  description: '',
+  language: '',
+  image: {},
+  lastBuildDate: '',
+  items: [],
+  itunes: {},
 });
 
 // For testing - https://media.rss.com/dr-watson-s-many-fine-tales-of-sherlock-holmes/feed.xml
@@ -30,8 +36,31 @@ async function addFeed() {
       console.error('API not available')
       return
     }
-    const feed = await window.api.addFeed('https://example.com/feed', 'Example Feed')
-    console.log('Feed added successfully:', feed)
+
+    const feedToAdd = {
+      title: newFeed.value.title,
+      link: newFeed.value.link,
+      description: newFeed.value.description,
+      language: newFeed.value.language,
+      image: JSON.stringify(newFeed.value.image),
+      lastBuildDate: newFeed.value.lastBuildDate,
+      items: JSON.stringify(newFeed.value.items),
+      itunes: JSON.stringify(newFeed.value.itunes)
+    }
+
+    console.log('Feed to add:', feedToAdd)
+
+    await window.api.addFeed(
+      feedToAdd.title,
+      feedToAdd.link,
+      feedToAdd.description,
+      feedToAdd.language,
+      feedToAdd.image,
+      feedToAdd.lastBuildDate,
+      feedToAdd.items,
+      feedToAdd.itunes
+    )
+    // console.log('Feed added successfully:')
     getFeeds()
   } catch (error) {
     console.error('Failed to add feed:', error)
@@ -81,7 +110,13 @@ async function populateNewFeed() {
     console.log('Feed parsed successfully:', feed)
     newFeed.value = {
       title: feed.title,
-      description: feed.description
+      link: feed.link,
+      description: feed.description,
+      language: feed.language,
+      image: feed.image,
+      lastBuildDate: feed.lastBuildDate,
+      items: feed.items,
+      itunes: feed.itunes,
     }
   } catch (error) {
     console.error('Failed to parse feed:', error)

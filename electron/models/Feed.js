@@ -21,24 +21,20 @@ const Feed = sequelize.define('Feed', {
     type: DataTypes.STRING,
     allowNull: true,
   },
-  copyright: {
+  image: {
+    type: DataTypes.JSON,
+    allowNull: true,
+  },
+  lastBuildDate: {
     type: DataTypes.STRING,
     allowNull: true,
   },
-  itunes_author: {
-    type: DataTypes.STRING,
+  items: {
+    type: DataTypes.JSON,
     allowNull: true,
   },
-  itunes_explicit: {
-    type: DataTypes.STRING,
-    allowNull: true,
-  },
-  itunes_image: {
-    type: DataTypes.STRING,
-    allowNull: true,
-  },
-  itunes_category: {
-    type: DataTypes.STRING,
+  itunes: {
+    type: DataTypes.JSON,
     allowNull: true,
   },
 });

@@ -57,8 +57,26 @@ app.on('activate', () => {
   }
 });
 
-ipcMain.handle('feed:add', async (event, { link, title }) => {
-  return await Feed.create({ link, title })
+ipcMain.handle('feed:add', async (event, { 
+  title,
+  link,
+  description,
+  language,
+  image,
+  lastBuildDate,
+  items,
+  itunes
+ }) => {
+  return await Feed.create({ 
+    title,
+    link,
+    description,
+    language,
+    image,
+    lastBuildDate,
+    items,
+    itunes
+   })
 });
 
 ipcMain.handle('feed:all', async (event) => {
