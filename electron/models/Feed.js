@@ -46,4 +46,8 @@ Feed.delete = async (id) => {
   });
 };
 
+Feed.parse = async (feedUrl) => {
+  // We'll be getting a feed from a URL
+};
+
 export default Feed;

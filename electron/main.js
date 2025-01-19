@@ -68,3 +68,7 @@ ipcMain.handle('feed:all', async (event) => {
 ipcMain.handle('feed:delete', async (event, id) => {
   return await Feed.destroy({ where: { id } });
 });
+
+ipcMain.handle('feed:parse', async (event, feedUrl) => {
+  return await Feed.parse(feedUrl);
+});

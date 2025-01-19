@@ -1,6 +1,9 @@
 <template>
   <main id="app">
+    <input type="text" v-model="rssFeedUrl" placeholder="Feed URL" class="form-input">
+    <pre>{{ newFeed }}</pre>
     <button @click="addFeed">Add Feed</button>
+    <hr>
     <div v-if="feeds">
       <h2>Feeds</h2>
       <div v-for="feed in feeds" :key="feed.id">
@@ -13,6 +16,13 @@
 <script setup>
 
 const feeds = ref(null)
+const rssFeedUrl = ref('')
+const newFeed = ref({
+  title: '',
+  description: ''
+});
+
+// For testing - https://media.rss.com/dr-watson-s-many-fine-tales-of-sherlock-holmes/feed.xml
 
 async function addFeed() {
   try {
@@ -54,6 +64,25 @@ async function deleteFeed(id) {
   }
 }
 
+async function populateNewFeed() {
+  // 1. read the contents of the xml in rssFeedUrl
+  // 2. parse the xml
+  // 3. extract the title and description
+  // 4. set newFeed to the title and description
+
+  try {
+    if (!window?.api?.parseFeed) {
+      console.error('API not available')
+      return
+    }
+    const feed = await window.api.parseFeed(rssFeedUrl)
+    console.log('Feed parsed successfully:', feed)
+    newFeed.value = feed
+  } catch (error) {
+    console.error('Failed to parse feed:', error)
+  }
+}
+
 onMounted(async () => {
   console.log('API available:', !!window?.api)
   try {
@@ -64,3 +93,13 @@ onMounted(async () => {
   }
 })
 </script>
+
+<style scoped lang="scss">
+
+@use 'assets/variables' as *;
+
+#app {
+  padding: $spacing-sm;
+}
+
+</style>
