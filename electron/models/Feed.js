@@ -12,31 +12,31 @@ const Feed = sequelize.define('Feed', {
   },
   description: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   language: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   copyright: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   itunes_author: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   itunes_explicit: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   itunes_image: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   itunes_category: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
 });
 
