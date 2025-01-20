@@ -11,10 +11,7 @@ definePageMeta({
   layout: 'default'
 });
 
-// Get the route object
 const route = useRoute();
-
-// Extract the client ID from the route parameters
 const feedId = route.params.id;
 
 </script>

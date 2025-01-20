@@ -12,11 +12,12 @@
           </template>
           <section class="feed-details">
             <h2>{{ feed.dataValues.title }}</h2>
+            <p>{{ getItunesName(feed) }}</p>
             <div class="description" v-html="feed.dataValues.description"></div>
           </section>
         </section>
         <button @click="handleDelete(feed.dataValues.id)" class="red">Delete</button>
-      </nuxt-link>
+      </nuxt-link> 
     </section>
     <div v-else class="no-feeds">
       <p>No feeds found</p>
@@ -44,6 +45,16 @@ function getFeedImage(feed) {
     return imageData.url || imageData.link || null
   } catch (e) {
     console.error('Failed to parse image data:', e)
+    return null
+  }
+}
+
+function getItunesName(feed) {
+  try {
+    const itunesData = JSON.parse(feed.dataValues.itunes)
+    return itunesData.owner.name || null
+  } catch (e) {
+    console.error('Failed to parse itunes data:', e)
     return null
   }
 }
