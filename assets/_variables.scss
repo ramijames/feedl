@@ -48,9 +48,7 @@ $brand-light: #288ffd;
   $fill-sheet: #CCCCCC;
 
 /* Borders */
-
 $border: 1px solid rgba($black, 0.1);
-
 
 /* Fonts */
 $font-family-main: 'SFPro', 'Helvetica', sans-serif;
@@ -83,11 +81,6 @@ $spacing-lg: 4rem;
 $spacing-xl: 8rem;
 $spacing-xxl: 16rem;
 
-/* Positioning */
-$p-desktop: 1rem;
-$p-tablet: 0.75rem;
-$p-mobile: 0.5rem;
-
 /* Widths */
 $width-sm: 30rem;
 $width-md: 50rem;
@@ -106,3 +99,11 @@ $shadow-secondary-dark: 0 8px 40px rgba($black, 0.7), 0 0 1px 1px rgba($black, 1
 $shadow-tertiary-dark: 0 36px 100px rgba($black, 0.7), 0 0 1px 1px rgba($black, 1);
 $shadow-quaternary-dark: 0 4px 20px rgba($black, 0.7), 0 0 1px 1px rgba($black, 1);
 $shadow-inner-dark: inset 0 0 3px rgba($white, 0.2);
+
+/* Breakpoints */
+$breakpoint-xs: 320px;
+$breakpoint-sm: 480px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1440px;

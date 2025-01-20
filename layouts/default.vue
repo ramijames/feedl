@@ -29,6 +29,11 @@ import Sidebar from '~/components/Sidebar.vue'
     flex: 1;
     background: $white;
     overflow-y: auto;
+    transition: padding .35s ease;
+
+    @media (max-width: $breakpoint-lg) {
+      padding: $spacing-md;
+    }
   }
 }
 
