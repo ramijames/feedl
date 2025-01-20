@@ -88,16 +88,16 @@ $width-lg: 70rem;
 $width-xl: 90rem;
 
 /* Shadows */
-$shadow-primary: 0 36px 100px rgba($black, 0.4), 0 0 0 3px rgba($black, 0.55);
-$shadow-secondary: 0 8px 40px rgba($black, 0.25), 0 0 0 3px rgba($black, 0.55);
-$shadow-tertiary: 0 36px 100px rgba($black, 0.25), 0 0 0 3px rgba($black, 0.55);
-$shadow-quaternary: 0 4px 20px rgba($black, 0.25), 0 0 0 3px rgba($black, 0.55);
+$shadow-primary: 0 36px 100px rgba($black, 0.4), 0 0 0 1px rgba($black, 0.05);
+$shadow-secondary: 0 8px 40px rgba($black, 0.25), 0 0 0 1px rgba($black, 0.05);
+$shadow-tertiary: 0 36px 100px rgba($black, 0.25), 0 0 0 1px rgba($black, 0.05);
+$shadow-quaternary: 0 4px 20px rgba($black, 0.25), 0 0 0 1px rgba($black, 0.05);
 $shadow-inner: inset 0 0 3px rgba($white, 0.1);
 
-$shadow-primar-dark: 0 36px 100px rgba($black, 0.7), 0 0 1px 1px rgba($black, 1);
-$shadow-secondary-dark: 0 8px 40px rgba($black, 0.7), 0 0 1px 1px rgba($black, 1);
-$shadow-tertiary-dark: 0 36px 100px rgba($black, 0.7), 0 0 1px 1px rgba($black, 1);
-$shadow-quaternary-dark: 0 4px 20px rgba($black, 0.7), 0 0 1px 1px rgba($black, 1);
+$shadow-primar-dark: 0 36px 100px rgba($black, 0.7), 0 0 0 1px rgba($black, 0.7);
+$shadow-secondary-dark: 0 8px 40px rgba($black, 0.7), 0 0 0 1px rgba($black, 0.7);
+$shadow-tertiary-dark: 0 36px 100px rgba($black, 0.7), 0 0 0 1px rgba($black, 0.7);
+$shadow-quaternary-dark: 0 4px 20px rgba($black, 0.7), 0 0 0 1px rgba($black, 0.7);
 $shadow-inner-dark: inset 0 0 3px rgba($white, 0.2);
 
 /* Breakpoints */

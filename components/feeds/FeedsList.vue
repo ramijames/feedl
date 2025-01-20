@@ -2,16 +2,21 @@
   <div v-if="feeds" class="feeds-list">
     <h1>My Podcasts</h1>
     <section class="feeds-list-content" v-if="feeds.length > 0">
-      <div v-for="feed in props.feeds" :key="feed.id" class="single-feed">
+      <nuxt-link v-for="feed in props.feeds" :key="feed.id" class="single-feed" :to="`/feed/${feed.dataValues.id}`">
+        <template v-if="getFeedImage(feed)">
+          <img :src="getFeedImage(feed)" :alt="feed.dataValues.title" class="bg-image" />
+        </template>
         <section class="feed-content">
-          <!-- <p>{{ feed.dataValues.id }}</p> -->
           <template v-if="getFeedImage(feed)">
             <img :src="getFeedImage(feed)" :alt="feed.dataValues.title" class="podcast-image" />
           </template>
-          <h2>{{ feed.dataValues.title }}</h2>
+          <section class="feed-details">
+            <h2>{{ feed.dataValues.title }}</h2>
+            <div class="description" v-html="feed.dataValues.description"></div>
+          </section>
         </section>
         <button @click="handleDelete(feed.dataValues.id)" class="red">Delete</button>
-      </div>
+      </nuxt-link>
     </section>
     <div v-else class="no-feeds">
       <p>No feeds found</p>
@@ -65,18 +70,54 @@ function getFeedImage(feed) {
       width: 100%;
       border-radius: $br-xl;
       background-color: rgba($black, 0.025);
-      height: 300px;
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      
+      .bg-image {
+        display: none;
+        // width: calc(100% + 40px);
+        // height: auto;
+        // object-fit: cover;
+        // border-radius: $br-lg;
+        // position: absolute;
+        // top:-20px;
+        // left: -20px;
+        // z-index: 0;
+        // filter: blur(10px);
+        // mask-image: linear-gradient(45deg, rgba($black, 0.25) 0%, rgba($black, 0) 55%);
+      }
 
       .feed-content {
         display: flex;
         flex-direction: row;
-        gap: $spacing-xs;
+        gap: $spacing-md;
+        width: 100%;
+        z-index: 1;
+        position: relative;
+        color: $black;
+        height: 100px;
+        overflow: hidden;
 
         .podcast-image {
-          width: 144px;
-          height: 144px;
+          width: 100px;
+          height: 100px;
           object-fit: cover;
           border-radius: $br-lg;
+        }
+
+        .feed-details { 
+          display: flex;
+          flex-direction: column;
+          gap: $spacing-xs;
+
+          .description {
+            font-size: $font-size-xs;
+            color: rgba($black, 0.5);
+            height: 54px;
+            overflow: hidden;
+          }
         }
 
         p {
@@ -88,10 +129,6 @@ function getFeedImage(feed) {
         h2 {
           margin: 0;
         }
-      }
-      
-      &:hover {
-        background-color: rgba($black, 0.05);
       }
     }
   }
