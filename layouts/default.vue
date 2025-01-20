@@ -19,8 +19,8 @@ import Sidebar from '~/components/Sidebar.vue'
 
 .default-layout {
   display: grid;
-  grid-template-columns: 200px 1fr;
-  background-color: #E6E6E6;
+  grid-template-columns: 220px 1fr;
+  // background-color: #E6E6E6;
   height: 100%;
   overflow: hidden;
 

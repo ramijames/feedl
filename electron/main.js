@@ -28,14 +28,16 @@ app.on('ready', async () => {
     width: 1180,
     height: 920,
     transparent: true,
-    backgroundColor: '#00FFFFFF',
+    backgroundColor: '#00000000',
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
       nodeIntegration: false,
     },
     frame: false,
-    titleBarStyle: 'hidden'
+    titleBarStyle: 'hidden',
+    vibrancy: 'under-window',
+    visualEffectState: 'active',
   });
 
   console.log(mainWindow)

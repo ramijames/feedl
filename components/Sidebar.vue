@@ -23,7 +23,8 @@
   padding: $spacing-lg $spacing-sm;
   height: 100%;
   overflow-y: auto;
-  background: linear-gradient(to right, transparent 99%, #C6C6C6 100%);
+  background: rgba(255, 255, 255, 0.1); // Adjust opacity as needed
+  backdrop-filter: blur(4px);
   -webkit-app-region: drag;
   app-region: drag;
 
