@@ -1,8 +1,8 @@
 <template>
   <main id="app">
-    <input type="text" v-model="rssFeedUrl" placeholder="Feed URL" class="form-input" @change="populateNewFeed">
-    <pre>{{ newFeed }}</pre>
-    <button @click="addFeed">Add Feed</button>
+    <input type="text" v-model="rssFeedUrl" placeholder="Feed URL" class="form-input">
+    <!-- <pre>{{ newFeed }}</pre> -->
+    <button @click="handleAddFeed">Add Feed</button>
     <hr>
     <div v-if="feeds">
       <h2>Feeds</h2>
@@ -28,7 +28,26 @@ const newFeed = ref({
   itunes: {},
 });
 
+const loading = ref(false)
+
 // For testing - https://media.rss.com/dr-watson-s-many-fine-tales-of-sherlock-holmes/feed.xml
+
+async function handleAddFeed() {
+  loading.value = true
+  try {
+    await populateNewFeed()
+  } catch (error) {
+    console.error('Failed to add feed:', error)
+    loading.value = false
+  }
+  try {
+    await addFeed()
+    loading.value = false
+  } catch (error) {
+    console.error('Failed to add feed:', error)
+    loading.value = false
+  }
+}
 
 async function addFeed() {
   try {
