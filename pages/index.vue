@@ -4,12 +4,7 @@
     <!-- <pre>{{ newFeed }}</pre> -->
     <button @click="handleAddFeed">Add Feed</button>
     <hr>
-    <div v-if="feeds">
-      <h2>Feeds</h2>
-      <div v-for="feed in feeds" :key="feed.id">
-        {{ feed.dataValues.id }} - {{ feed.dataValues.title }} <button @click="deleteFeed(feed.dataValues.id)">Delete</button>
-      </div>
-    </div>
+    <FeedsList :feeds="feeds" @delete="deleteFeed" />
   </main>
 </template>
 
@@ -79,7 +74,6 @@ async function addFeed() {
       feedToAdd.items,
       feedToAdd.itunes
     )
-    // console.log('Feed added successfully:')
     getFeeds()
   } catch (error) {
     console.error('Failed to add feed:', error)
