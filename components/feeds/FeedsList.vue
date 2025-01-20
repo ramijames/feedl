@@ -2,7 +2,9 @@
   <div v-if="feeds" class="feeds-list">
     <h1>My Podcasts</h1>
     <section class="feeds-list-content" v-if="feeds.length > 0">
-      <nuxt-link v-for="feed in props.feeds" :key="feed.id" class="single-feed" :to="`/feed/${feed.dataValues.id}`">
+      <!-- ALL OF THIS NEEDS TO BE ONE COMPONENT -->
+      <FeedCard v-for="feed in props.feeds" :feed="feed" />
+      <!-- <nuxt-link v-for="feed in props.feeds" :key="feed.id" class="single-feed" :to="`/feed/${feed.dataValues.id}`">
         <template v-if="getFeedImage(feed)">
           <img :src="getFeedImage(feed)" :alt="feed.dataValues.title" class="bg-image" />
         </template>
@@ -12,12 +14,15 @@
           </template>
           <section class="feed-details">
             <h2>{{ feed.dataValues.title }}</h2>
-            <p>{{ getItunesName(feed) }}</p>
+            <p>from {{ owner.name }}</p>
             <div class="description" v-html="feed.dataValues.description"></div>
+            <div class="categories">
+              <span v-for="category in categories">{{ category }}</span>
+            </div>
           </section>
         </section>
         <button @click="handleDelete(feed.dataValues.id)" class="red">Delete</button>
-      </nuxt-link> 
+      </nuxt-link>  -->
     </section>
     <div v-else class="no-feeds">
       <p>No feeds found</p>
@@ -27,6 +32,8 @@
 
 <script setup>
 
+import FeedCard from '~/components/feeds/FeedCard.vue'
+
 const loading = ref(false)
 
 const props = defineProps({
@@ -34,6 +41,8 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['delete'])
+const categories = ref([])
+const owner = ref('')
 
 function handleDelete(id) {
     emit('delete', id)
@@ -49,15 +58,33 @@ function getFeedImage(feed) {
   }
 }
 
-function getItunesName(feed) {
+async function getItunesName(feed) {
   try {
     const itunesData = JSON.parse(feed.dataValues.itunes)
-    return itunesData.owner.name || null
+    owner.value = itunesData.owner || ''
   } catch (e) {
     console.error('Failed to parse itunes data:', e)
     return null
   }
 }
+
+async function getItunesCategories(feed) {
+  try {
+    const itunesData = JSON.parse(feed.dataValues.itunes)
+    categories.value = itunesData.categories || []
+  } catch (e) {
+    console.error('Failed to parse itunes data:', e)
+    return null
+  }
+}
+
+onMounted(async () => {
+  try {
+    await getFeeds()
+  } catch (error) {
+    console.error('Failed to get feeds:', error)
+  }
+})
 
 </script>
 
@@ -71,77 +98,6 @@ function getItunesName(feed) {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     gap: $spacing-md;
-
-    .single-feed {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: space-between;
-      padding: $spacing-md;
-      width: 100%;
-      border-radius: $br-xl;
-      background-color: rgba($black, 0.025);
-      height: 200px;
-      position: relative;
-      overflow: hidden;
-      text-decoration: none;
-      
-      .bg-image {
-        display: none;
-        // width: calc(100% + 40px);
-        // height: auto;
-        // object-fit: cover;
-        // border-radius: $br-lg;
-        // position: absolute;
-        // top:-20px;
-        // left: -20px;
-        // z-index: 0;
-        // filter: blur(10px);
-        // mask-image: linear-gradient(45deg, rgba($black, 0.25) 0%, rgba($black, 0) 55%);
-      }
-
-      .feed-content {
-        display: flex;
-        flex-direction: row;
-        gap: $spacing-md;
-        width: 100%;
-        z-index: 1;
-        position: relative;
-        color: $black;
-        height: 100px;
-        overflow: hidden;
-
-        .podcast-image {
-          width: 100px;
-          height: 100px;
-          object-fit: cover;
-          border-radius: $br-lg;
-        }
-
-        .feed-details { 
-          display: flex;
-          flex-direction: column;
-          gap: $spacing-xs;
-
-          .description {
-            font-size: $font-size-xs;
-            color: rgba($black, 0.5);
-            height: 54px;
-            overflow: hidden;
-          }
-        }
-
-        p {
-          font-size: $font-size-xs;
-          color: rgba($black, 0.5);
-          margin: 0;
-        }
-
-        h2 {
-          margin: 0;
-        }
-      }
-    }
   }
 
   .no-feeds {
