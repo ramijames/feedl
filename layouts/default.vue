@@ -20,13 +20,15 @@ import Sidebar from '~/components/Sidebar.vue'
 .default-layout {
   display: grid;
   grid-template-columns: 200px 1fr;
-  background-color: $fill-sheet;
+  background-color: #E6E6E6;
   height: 100%;
+  overflow: hidden;
 
   .content {
-    padding: $spacing-md;
+    padding: $spacing-lg;
     flex: 1;
     background: $white;
+    overflow-y: auto;
   }
 }
 

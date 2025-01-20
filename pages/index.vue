@@ -1,8 +1,10 @@
 <template>
   <NuxtLayout>
-    <section>
-      <input type="text" v-model="rssFeedUrl" placeholder="Feed URL" class="form-input">
-      <button @click="handleAddFeed" class="primary">Add Feed</button>
+    <section class="feeds">
+      <section class="add-feed">
+        <input type="text" v-model="rssFeedUrl" placeholder="Feed URL" class="form-input">
+        <button @click="handleAddFeed" class="primary">Add Feed</button>
+      </section>
       <FeedsList :feeds="feeds" @delete="deleteFeed" />
     </section>
   </NuxtLayout>
@@ -48,42 +50,6 @@ async function handleAddFeed() {
   }
 }
 
-async function addFeed() {
-  try {
-    if (!window?.api?.addFeed) {
-      console.error('API not available')
-      return
-    }
-
-    const feedToAdd = {
-      title: newFeed.value.title,
-      link: newFeed.value.link,
-      description: newFeed.value.description,
-      language: newFeed.value.language,
-      image: JSON.stringify(newFeed.value.image),
-      lastBuildDate: newFeed.value.lastBuildDate,
-      items: JSON.stringify(newFeed.value.items),
-      itunes: JSON.stringify(newFeed.value.itunes)
-    }
-
-    console.log('Feed to add:', feedToAdd)
-
-    await window.api.addFeed(
-      feedToAdd.title,
-      feedToAdd.link,
-      feedToAdd.description,
-      feedToAdd.language,
-      feedToAdd.image,
-      feedToAdd.lastBuildDate,
-      feedToAdd.items,
-      feedToAdd.itunes
-    )
-    getFeeds()
-  } catch (error) {
-    console.error('Failed to add feed:', error)
-  }
-}
-
 async function getFeeds() {
   try {
     if (!window?.api?.getFeeds) {
@@ -111,32 +77,60 @@ async function deleteFeed(id) {
 }
 
 async function populateNewFeed() {
-  // 1. read the contents of the xml in rssFeedUrl
-  // 2. parse the xml
-  // 3. extract the title and description
-  // 4. set newFeed to the title and description
-
-  console.log('rssFeedUrl:', rssFeedUrl.value)
-
+  console.log('Starting feed parse:', rssFeedUrl.value)
+  
   try {
     if (!window?.api?.parseFeed) {
-      console.error('API not available')
-      return
+      throw new Error('Parse feed API not available')
     }
-    const feed = await window.api.parseFeed(rssFeedUrl.value)
-    console.log('Feed parsed successfully:', feed)
+
+    const parsedFeed = await window.api.parseFeed(rssFeedUrl.value)
+    console.log('Parsed feed:', parsedFeed)
+    
     newFeed.value = {
-      title: feed.title,
-      link: feed.link,
-      description: feed.description,
-      language: feed.language,
-      image: feed.image,
-      lastBuildDate: feed.lastBuildDate,
-      items: feed.items,
-      itunes: feed.itunes,
+      title: parsedFeed.title || '',
+      link: parsedFeed.link || '',
+      description: parsedFeed.description || '',
+      language: parsedFeed.language || '',
+      image: parsedFeed.image || {},
+      lastBuildDate: parsedFeed.lastBuildDate || '',
+      items: parsedFeed.items || [],
+      itunes: parsedFeed.itunes || {}
     }
+
+    console.log('Updated newFeed:', newFeed.value)
   } catch (error) {
     console.error('Failed to parse feed:', error)
+    throw error
+  }
+}
+
+async function addFeed() {
+  try {
+    if (!window?.api?.addFeed) {
+      throw new Error('Add feed API not available')
+    }
+
+    const feedToAdd = {
+      title: newFeed.value.title,
+      link: newFeed.value.link,
+      description: newFeed.value.description || '',
+      language: newFeed.value.language || '',
+      image: JSON.stringify(newFeed.value.image || {}),
+      lastBuildDate: newFeed.value.lastBuildDate || '',
+      items: JSON.stringify(newFeed.value.items || []),
+      itunes: JSON.stringify(newFeed.value.itunes || {})
+    }
+
+    console.log('Adding feed:', feedToAdd)
+
+    await window.api.addFeed(feedToAdd)
+    await getFeeds()
+    rssFeedUrl.value = ''
+    
+  } catch (error) {
+    console.error('Failed to add feed:', error)
+    throw error
   }
 }
 
@@ -154,5 +148,15 @@ onMounted(async () => {
 <style scoped lang="scss">
 
 @use 'assets/variables' as *;
+
+.feeds {
+  height: 100%;
+
+  .add-feed {
+    display: flex;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-md;
+  }
+}
 
 </style>

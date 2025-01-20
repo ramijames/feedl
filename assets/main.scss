@@ -229,8 +229,14 @@ h5 {
 }
 
 h1 {
-    font-size: $font-size-xl;
-    margin: 0 0 $spacing-md 0;
+    font-family: $font-family-main;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 32px;
+    color: rgba($black, 0.85);
+    border-bottom: $border;
+    padding: $spacing-xs 0;
 }
 
 h2 {
@@ -594,23 +600,14 @@ button,
 .button {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     padding: 3px 7px;
-
-    margin: 0 auto;
     height: 22px;
-
     background: #FFFFFF;
     box-shadow: 0px 0.5px 2.5px rgba(0, 0, 0, 0.3), 0px 0px 0px 0.5px rgba(0, 0, 0, 0.05);
     border-radius: 5px;
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-
     border: none;
     outline: none;
+    text-wrap: nowrap;
 
     &:hover {
         background: rgba($black, 0.075);

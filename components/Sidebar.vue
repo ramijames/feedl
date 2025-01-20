@@ -1,5 +1,5 @@
 <template>
   <div class="sidebar">
-    <nuxt-link to="/">Podcasts</nuxt-link>
+    <nuxt-link to="/">My Podcasts</nuxt-link>
   </div>
 </template>
