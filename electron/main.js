@@ -25,8 +25,8 @@ app.on('ready', async () => {
   console.log('Database and models synced');
 
   mainWindow = new BrowserWindow({
-    width: 1024,
-    height: 768,
+    width: 1180,
+    height: 920,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,

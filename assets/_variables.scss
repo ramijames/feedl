@@ -1,39 +1,51 @@
 /* Colors */
 $black: #0D1E38;
-$black-dark: #040912;
-$black-light: #1b3e74;
-
 $white: #ffffff;
-$white-dark: #f1f0fb;
-$white-light: #f6f6fb;
 
-$blue: #6A7CBE;
-$blue-dark: #404AA4;
-$blue-light: #8AA1D2;
+$brand: #007AFF;
+$brand-dark: #0168d7;
+$brand-light: #288ffd;
 
-$orange: #CAA466;
-$orange-dark: #B5803D;
-$orange-light: #f8e1b0;
+  /* Accents */
+  $accent-red: #FF3B30;
+  $accent-red-dark: #FF453A;
+  $accent-orange: #FF9500;
+  $accent-orange-dark: #FF9F0A;
+  $accent-yellow: #FFCC00;
+  $accent-yellow-dark: #FFD60A;
+  $accent-green: #28CD41;
+  $accent-green-dark: #32D74B;
+  $accent-mint: #00C7BE;
+  $accent-mint-dark: #66D4CF;
+  $accent-teal: #59ADC4;
+  $accent-teal-dark: #6AC4DC;
+  $accent-cyan: #55BEF0;
+  $accent-cyan-dark: #5AC8F5;
+  $accent-blue: #007AFF;
+  $accent-blue-dark: #0A84FF;
+  $accent-indigo: #5856D6;
+  $accent-indigo-dark: #5E5CE6;
+  $accent-purple: #AF52DE;
+  $accent-purple-dark: #BF5AF2;
+  $accent-pink: #FF2D55;
+  $accent-pink-dark: #FF375F;
+  $accent-gray: #8E8E93;
+  $accent-gray-dark: #98989D;
+  $accent-brown: #A2845E;
+  $accent-brown-dark: #AC8E68;
 
-$green: #5B7D39;
-$green-dark: #374B22;
-$green-light: #76A34A;
-
-$brand: #1864DA;
-$brand-dark: #0f479b;
-$brand-light: #4787e8;
-
-$red: #c25020;
-$red-dark: #a64319;
-$red-light: #d75d29;
-
-$mint: #91aa72;
-$mint-dark: #576d3c;
-$mint-light: #D5E2C6;
-
-$gray: #DBD7E1;
-$gray-dark: #CDC7D5;
-$gray-light: #E6E3EA;
+  /* Fills */
+  $fill-primary: rgba($black, 0.1);
+  $fill-secondary: rgba($black, 0.08);
+  $fill-tertiary: rgba($black, 0.05);
+  $fill-quaternary: rgba($black, 0.03);
+  $fill-quinary: rgba($black, 0.015);
+  $fill-primary-dark: rgba($white, 0.1);
+  $fill-secondary-dark: rgba($white, 0.08);
+  $fill-tertiary-dark: rgba($white, 0.05);
+  $fill-quaternary-dark: rgba($white, 0.03);
+  $fill-quinary-dark: rgba($white, 0.015);
+  $fill-sheet: #CCCCCC;
 
 /* Borders */
 
@@ -41,21 +53,17 @@ $border: 1px solid rgba($black, 0.1);
 
 
 /* Fonts */
-$font-family-main: 'Noto Sans', sans-serif;
-$font-family-secondary: 'Noto Sans', sans-serif;
-$font-size-xxs: 10px;
-$font-size-base: 12px;
+$font-family-main: 'SFPro', 'Helvetica', sans-serif;
+$font-size-xxs: 12px;
+$font-size-base: 13px;
 $font-size-xs: 12px;
-$font-size-sm: 14px;
-$font-size-md: 16px;
-$font-size-lg: 20px;
-$font-size-xl: 24px;
-$font-size-xxl: 32px;
+$font-size-sm: 13px;
+$font-size-md: 15px;
+$font-size-lg: 17px;
+$font-size-xl: 22px;
+$font-size-xxl: 26px;
 $font-size-max: 40px;
 $font-size-mega: 60px;
-
-$multiplier: 1.4;
-$multiplier-sm: 1.14;
 
 /* Border-radius */
 $br-xs: 0.1rem;
@@ -87,7 +95,14 @@ $width-lg: 70rem;
 $width-xl: 90rem;
 
 /* Shadows */
-$main-shadow: 0px 3px 5px rgba($black, 0.025), 0px 2px 2px rgba(0, 0, 0, 0.025), 0px 4px 4px rgba($black, 0.01);
-$big-shadow: 0px 0px 1px 1px rgba($brand, 0.1), 0px 20px 18px rgba($black, 0.1), 0px 20px 28px rgba($black, 0.05), 0px 6px 25px rgba($black, 0.01);
-$soft-shadow: 0px 1px 1px rgba($black, 0.05), 0px 8px 8px rgba($black, 0.05);
-$small-shadow: rgba($black, 0.04) 0px 1px 6px 0px, rgba($black, 0.12) 0px -2px 4px 0px inset, rgba($black, 0.14) 0px -1px 2px 0px inset;
+$shadow-primary: 0 36px 100px rgba($black, 0.4), 0 0 0 3px rgba($black, 0.55);
+$shadow-secondary: 0 8px 40px rgba($black, 0.25), 0 0 0 3px rgba($black, 0.55);
+$shadow-tertiary: 0 36px 100px rgba($black, 0.25), 0 0 0 3px rgba($black, 0.55);
+$shadow-quaternary: 0 4px 20px rgba($black, 0.25), 0 0 0 3px rgba($black, 0.55);
+$shadow-inner: inset 0 0 3px rgba($white, 0.1);
+
+$shadow-primar-dark: 0 36px 100px rgba($black, 0.7), 0 0 1px 1px rgba($black, 1);
+$shadow-secondary-dark: 0 8px 40px rgba($black, 0.7), 0 0 1px 1px rgba($black, 1);
+$shadow-tertiary-dark: 0 36px 100px rgba($black, 0.7), 0 0 1px 1px rgba($black, 1);
+$shadow-quaternary-dark: 0 4px 20px rgba($black, 0.7), 0 0 1px 1px rgba($black, 1);
+$shadow-inner-dark: inset 0 0 3px rgba($white, 0.2);

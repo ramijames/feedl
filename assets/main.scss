@@ -127,18 +127,18 @@ body,
     }
 
     &.warning {
-        background: rgba($orange, 0.1);
-        color: $orange-dark;
+        background: rgba($accent-orange, 0.1);
+        color: $accent-orange-dark;
     }
 
     &.success {
-        background: rgba($mint, 0.1);
-        color: $mint-dark;
+        background: rgba($accent-mint, 0.1);
+        color: $accent-mint-dark;
     }
 
     &.error {
-        background: rgba($red, 0.1);
-        color: $red;
+        background: rgba($accent-red, 0.1);
+        color: $accent-red;
     }
 
 }
@@ -372,7 +372,7 @@ select:hover {
 
 input[disabled] {
     color: rgba($black, 0.65);
-    background-color: rgba($orange, 0.05);
+    background-color: rgba($accent-orange, 0.05);
     cursor: not-allowed;
 }
 
@@ -489,36 +489,23 @@ textarea {
 }
 
 .form-input {
-    border: 1px solid rgba($brand, 0.3);
-    border-radius: $br-md;
-    margin-bottom: $spacing-sm;
-    transition: all 0.2s ease;
-    width: 100%;
-    overflow: hidden;
-    height: fit-content;
-    outline: 1px solid rgba($brand, 0);
-    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 3px 7px;
 
-    .button {
-        position: absolute;
-        right: $spacing-sm;
-        top: $spacing-sm;
-        bottom: $spacing-sm;
-        background-color: rgba($brand, 0.1);
-        cursor: pointer;
-        transition: all 0.2s ease;
+    background: #FFFFFF;
+    box-shadow: 0px 0.5px 2.5px rgba(0, 0, 0, 0.3), 0px 0px 0px 0.5px rgba(0, 0, 0, 0.05);
+    border-radius: 5px;
 
-        &:hover {
-            background-color: rgba($brand, 0.2);
-        }
-    }
 
     &:focus,
     &:hover,
     &:focus-within,
     &:active {
-        border: 1px solid rgba($brand, 0.9);
-        outline: 4px solid rgba($brand, 0.3);
+        background: #FFFFFF;
+        box-shadow: 0px 0.5px 2.5px rgba(0, 0, 0, 0.3), 0px 0px 0px 0.5px rgba(0, 0, 0, 0.05), 0px 0px 0px 3px rgba(0, 122, 255, 0.5);
+        border-radius: 5px;
     }
 }
 
@@ -581,16 +568,16 @@ textarea {
 .form-errors {
     margin: 0 0 $spacing-md 0;
     padding: $spacing-sm;
-    border: 1px solid rgba($red, 0.1);
+    border: 1px solid rgba($accent-red, 0.1);
     border-radius: $br-md;
-    background-color: rgba($red, 0.05);
-    color: $red;
+    background-color: rgba($accent-red, 0.05);
+    color: $accent-red;
     transition: all 0.2s ease;
 }
 
 .form-error {
     color: $white;
-    background-color: rgba($red, 1);
+    background-color: rgba($accent-red, 1);
     padding: $spacing-xxs $spacing-xs;
     border-radius: $br-sm;
     font-size: $font-size-xs;
@@ -605,31 +592,28 @@ textarea {
 
 button,
 .button {
-    color: $black;
-    background: rgba($black, 0.05);
-    border-radius: $br-lg;
-    text-align: center;
-    text-decoration: none;
-    padding: $spacing-xxs $spacing-sm;
-    cursor: pointer;
-    font-size: $font-size-xs;
-    transition: all 0.2s ease;
-    font-family: $font-family-main;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    gap: calc($spacing-xxs - 2px);
     align-items: center;
-    text-transform: capitalize;
-    min-height: 24px;
-    border: none;
+    padding: 3px 7px;
 
-    @media (max-width: 960px) {
-        font-size: $font-size-xxs;
-    }
+    margin: 0 auto;
+    height: 22px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 0.5px 2.5px rgba(0, 0, 0, 0.3), 0px 0px 0px 0.5px rgba(0, 0, 0, 0.05);
+    border-radius: 5px;
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+
+    border: none;
+    outline: none;
 
     &:hover {
         background: rgba($black, 0.075);
-        transform: scale(1.035);
     }
 
     &:active {
@@ -639,235 +623,20 @@ button,
     &:disabled,
     &.disabled {
         cursor: not-allowed;
-        background: rgba($gray, 0.1);
+        background: rgba($black, 0.1);
         color: rgba($black, 0.25);
         outline: none;
     }
 }
 
-button.large,
-.button.large {
-    padding: $spacing-sm $spacing-md;
-    max-height: 44px;
-}
-
-button.small,
-.button.small {
-    padding: $spacing-xxxs $spacing-xs;
-    font-size: $font-size-xxs;
-}
-
-button.wide,
-.button.wide {
-    padding: $spacing-xs;
-    width: 100%;
-}
-
 button.primary,
 .button.primary {
-    // background: linear-gradient(to top, $brand 0%, $brand-light 100%);
-    background: $brand;
-    box-shadow: $main-shadow;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.17) 0%, rgba(255, 255, 255, 0) 100%), #007AFF;
+    box-shadow: 0px 1px 2.5px rgba(0, 122, 255, 0.24), 0px 0px 0px 0.5px rgba(0, 122, 255, 0.12);
     color: $white;
-
-    &:hover {
-        background: rgba($brand, 0.9);
-    }
-
-    &:disabled {
-        cursor: not-allowed;
-        background: rgba($brand, 0.1);
-        color: rgba($brand, 0.5);
-    }
-}
-
-button.clear,
-.button.clear {
-    background-color: rgba($brand, 0);
-
-    &:hover {
-        background-color: rgba($brand, 0);
-    }
-}
-
-button.toolbar,
-.button.toolbar {
-    background-color: rgba($brand, 0);
-    color: $black;
-
-    &:hover {
-        background-color: rgba($brand, 0);
-        color: $brand;
-    }
-}
-
-button.green,
-.button.green {
-    background-color: rgba($mint, 0.75);
-    color: $black;
-
-    &:hover {
-        background-color: rgba($mint, 1);
-    }
 }
 
 button.red,
 .button.red {
-    background-color: rgba($red, 0.05);
-    color: $red;
-
-    &:hover {
-        background-color: rgba($red, 0.1);
-    }
+    color: $accent-red;
 }
-
-button.vertical,
-.button.vertical {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-
-    small {
-        font-size: $font-size-xxs;
-        color: rgba($black, 0.5);
-    }
-}
-
-/* Widgets */
-
-.card {
-    width: 100%;
-    display: block;
-    border: var(--custom-border);
-    border-radius: var(--custom-border-radius);
-    padding: var(--custom-spacing);
-}
-
-.avatar {
-    border-radius: var(--custom-border-radius);
-    overflow: hidden;
-    max-width: 100%;
-}
-
-.avatar.image {
-    object-fit: cover;
-}
-
-.avatar.no-image {
-    background-color: #333;
-    border: 1px solid rgb(200, 200, 200);
-    border-radius: 5px;
-}
-
-
-.avatarPlaceholder {
-    border: var(--custom-border);
-    border-radius: var(--custom-border-radius);
-    width: 35px;
-    height: 35px;
-    background-color: rgba(255, 255, 255, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Editable Object Title */
-
-.object-overview {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: $spacing-md;
-    margin: 0 auto;
-    width: 100%;
-
-    &.no-border {
-        border-bottom: none;
-    }
-  
-    .object-summary {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      position: relative;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-  
-      .object-title-input {
-        font-size: $font-size-md;
-        font-weight: 500;
-        background-color: transparent;
-        width: 100%;
-        padding: $spacing-xxs $spacing-xxs 0;
-        text-align: left;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-
-        @media (max-width: 600px) {
-            font-size: $font-size-md;
-        }
-  
-        &:focus,
-        &:active {
-            color: $brand;
-        }
-      }
-
-      .object-description-input {
-        font-size: $font-size-xs;
-        font-weight: 500;
-        background-color: transparent;
-        width: 100%;
-        padding: 0 $spacing-xxs $spacing-xxs $spacing-xxs;
-        text-align: left;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-
-        @media (max-width: 600px) {
-            font-size: $font-size-xs;
-        }
-  
-        &:focus,
-        &:active {
-          color: $brand;
-          opacity: 1;
-        }
-      }
-  
-      span {
-        position: absolute;
-        right: $spacing-sm;
-        top: 0;
-        line-height: 54px;
-        opacity: 0.25;
-        font-size: $font-size-xs;
-        pointer-events: none;
-      }
-  
-    }
-  }
-
-  /* TipTap */
-
-  .ProseMirror {
-    padding: $spacing-sm $spacing-md $spacing-xl $spacing-md;
-    background-color: $white;
-
-    @media (max-width: 600px) {
-        padding: $spacing-sm;
-    }
-  }
-
-  .ProseMirror-focused {
-    outline: none;
-  }
-
-  .tiptap {
-    height: calc(100% - $spacing-md * 2);
-  }

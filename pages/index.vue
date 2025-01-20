@@ -1,14 +1,18 @@
 <template>
-  <main id="app">
-    <input type="text" v-model="rssFeedUrl" placeholder="Feed URL" class="form-input">
-    <!-- <pre>{{ newFeed }}</pre> -->
-    <button @click="handleAddFeed">Add Feed</button>
-    <hr>
-    <FeedsList :feeds="feeds" @delete="deleteFeed" />
-  </main>
+  <NuxtLayout>
+    <section>
+      <input type="text" v-model="rssFeedUrl" placeholder="Feed URL" class="form-input">
+      <button @click="handleAddFeed" class="primary">Add Feed</button>
+      <FeedsList :feeds="feeds" @delete="deleteFeed" />
+    </section>
+  </NuxtLayout>
 </template>
 
 <script setup>
+
+definePageMeta({
+  layout: 'default'
+});
 
 const feeds = ref(null)
 const rssFeedUrl = ref('')
@@ -150,9 +154,5 @@ onMounted(async () => {
 <style scoped lang="scss">
 
 @use 'assets/variables' as *;
-
-#app {
-  padding: $spacing-sm;
-}
 
 </style>
