@@ -27,11 +27,15 @@ app.on('ready', async () => {
   mainWindow = new BrowserWindow({
     width: 1180,
     height: 920,
+    transparent: true,
+    backgroundColor: '#00FFFFFF',
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
       nodeIntegration: false,
     },
+    frame: false,
+    titleBarStyle: 'hidden'
   });
 
   console.log(mainWindow)

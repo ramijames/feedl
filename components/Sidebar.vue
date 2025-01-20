@@ -20,10 +20,12 @@
 .sidebar {
   display: flex;
   flex-direction: column;
-  padding: $spacing-sm;
+  padding: $spacing-lg $spacing-sm;
   height: 100%;
   overflow-y: auto;
   background: linear-gradient(to right, transparent 99%, #C6C6C6 100%);
+  -webkit-app-region: drag;
+  app-region: drag;
 
   a {
     padding: 9px;
@@ -37,6 +39,8 @@
     align-items: center;
     gap: $spacing-xxs;
     font-size: $font-size-md;
+    -webkit-app-region: no-drag; // Makes region draggable
+    app-region: no-drag;
 
     svg {
       path {
