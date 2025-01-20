@@ -16,9 +16,9 @@
   display: flex;
   flex-direction: column;
   padding: $spacing-sm;
-  background: rgba($white, .1);
   height: 100%;
   overflow-y: auto;
+  background: linear-gradient(to right, transparent 99%, #C6C6C6 100%);
 
   a {
     padding: 9px;
