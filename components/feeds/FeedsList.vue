@@ -2,27 +2,7 @@
   <div v-if="feeds" class="feeds-list">
     <h1>My Podcasts</h1>
     <section class="feeds-list-content" v-if="feeds.length > 0">
-      <!-- ALL OF THIS NEEDS TO BE ONE COMPONENT -->
       <FeedCard v-for="feed in props.feeds" :feed="feed" />
-      <!-- <nuxt-link v-for="feed in props.feeds" :key="feed.id" class="single-feed" :to="`/feed/${feed.dataValues.id}`">
-        <template v-if="getFeedImage(feed)">
-          <img :src="getFeedImage(feed)" :alt="feed.dataValues.title" class="bg-image" />
-        </template>
-        <section class="feed-content">
-          <template v-if="getFeedImage(feed)">
-            <img :src="getFeedImage(feed)" :alt="feed.dataValues.title" class="podcast-image" />
-          </template>
-          <section class="feed-details">
-            <h2>{{ feed.dataValues.title }}</h2>
-            <p>from {{ owner.name }}</p>
-            <div class="description" v-html="feed.dataValues.description"></div>
-            <div class="categories">
-              <span v-for="category in categories">{{ category }}</span>
-            </div>
-          </section>
-        </section>
-        <button @click="handleDelete(feed.dataValues.id)" class="red">Delete</button>
-      </nuxt-link>  -->
     </section>
     <div v-else class="no-feeds">
       <p>No feeds found</p>

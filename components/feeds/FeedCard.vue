@@ -5,11 +5,10 @@
     </template>
     <section class="feed-content">
       <section class="feed-details">
-        <h2>{{ feed.dataValues.title }}</h2>
+        <h3>{{ feed.dataValues.title }}</h3>
         <p>from {{ owner.name }}</p>
-        <!-- <div class="description" v-html="feed.dataValues.description"></div> -->
         <div class="categories">
-          <span v-for="category in categories">{{ category }}</span>
+          <span v-for="category in categories" class="category">{{ category }}</span>
         </div>
       </section>
     </section>
@@ -76,12 +75,12 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: 100%;
   position: relative;
   overflow: hidden;
   text-decoration: none;
-  gap: $spacing-md;
+  gap: $spacing-sm;
 
   .podcast-image {
     width: 220px;
@@ -101,24 +100,34 @@ onMounted(() => {
 
     .feed-details { 
       display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
       flex-direction: column;
-      gap: $spacing-xs;
+      gap: $spacing-xxs;
 
-      .description {
+      .categories {
         font-size: $font-size-xs;
-        color: rgba($black, 0.5);
-        height: 54px;
-        overflow: hidden;
+        display: flex;
+        gap: $spacing-xxs;
+        margin-top: $spacing-xs;
+
+        .category {
+          color: rgba($brand, 0.5);
+          background: rgba($brand, 0.05);
+          padding: 3px 6px;
+          border-radius: $br-md;
+        }
       }
+    }
+
+    h3 {
+      margin: 0;
+      color: rgba($black, 0.85);
     }
 
     p {
       font-size: $font-size-xs;
-      color: rgba($black, 0.5);
-      margin: 0;
-    }
-
-    h2 {
+      color: rgba($black, 0.35);
       margin: 0;
     }
   }
