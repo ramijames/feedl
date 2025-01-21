@@ -106,6 +106,7 @@ async function populateNewFeed() {
     console.log('Updated newFeed:', newFeed.value)
   } catch (error) {
     console.error('Failed to parse feed:', error)
+    // Shake the modal
     throw error
   }
 }
