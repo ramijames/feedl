@@ -7,7 +7,7 @@
       <section class="feed-details">
         <h2>{{ feed.dataValues.title }}</h2>
         <p>from {{ owner.name }}</p>
-        <div class="description" v-html="feed.dataValues.description"></div>
+        <!-- <div class="description" v-html="feed.dataValues.description"></div> -->
         <div class="categories">
           <span v-for="category in categories">{{ category }}</span>
         </div>
@@ -54,7 +54,8 @@ async function getItunesName(feed) {
 
 async function getCategories(feed) {
   try {
-    categories.value = JSON.parse(feed.dataValues.categories)
+    const itunesData = JSON.parse(feed.dataValues.itunes)
+    categories.value = itunesData.categories || ''
   } catch (e) {
     console.error('Failed to parse categories:', e)
   }
