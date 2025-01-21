@@ -1,6 +1,6 @@
 <template>
   <NuxtLayout>
-    <div v-if="feed" class="feed-detail">
+    <div v-if="feed" class="feed-detail sheet-content">
       <header>
         <img v-if="feedImage" :src="feedImage" :alt="feed.title" />
         <h1>{{ feed.title }}</h1>
