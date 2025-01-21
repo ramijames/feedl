@@ -1,12 +1,10 @@
 <template>
-  <main id="Loading"">
-    <div :class="['spinner', type]"></div>
+  <main class="loading"">
+    <div class="spinner"></div>
   </main>
 </template>
 
 <script setup>
-
-const props = defineProps(['type'])
 
 </script>
 
@@ -14,7 +12,7 @@ const props = defineProps(['type'])
 
 @use 'assets/variables' as *;
 
-#Loading {
+.loading {
   display: flex;
   flex-direction: column;
   gap: $spacing-sm;
@@ -33,27 +31,6 @@ const props = defineProps(['type'])
     animation: spin .5s linear infinite;
     display: block;
     padding: 0;
-
-    &.tiny {
-      width: 16px;
-      height: 16px;
-      border: 1px solid rgba($brand, .1);
-      border-top-color: $brand;
-    }
-
-    &.small {
-      width: 20px;
-      height: 20px;
-      border: 2px solid rgba($brand, .1);
-      border-top-color: $brand;
-    }
-
-    &.header {
-      width: 20px;
-      height: 20px;
-      border: 4px solid rgba($white, .1);
-      border-top-color: $white;
-    }
   }
 
   @keyframes spin {

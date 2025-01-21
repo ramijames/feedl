@@ -4,7 +4,8 @@ export const useModal = defineStore('modal', {
   state: () => ({
     visible: false,
     content: '',
-    loading: 0
+    loading: 0,
+    refreshTrigger: false
   }),
   actions: {
     toggleVisibility() {
@@ -17,9 +18,15 @@ export const useModal = defineStore('modal', {
     setContent(content) {
       this.content = content
     },
+    triggerRefresh() {
+      this.refreshTrigger = !this.refreshTrigger
+    },
     reset() {
       this.content = ''
+      this.type = ''
+      this.header = ''
       this.loading = 0
+      this.workflowId = ''
       this.visible = false
     },
     updateBodyClass() {

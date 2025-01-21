@@ -699,7 +699,7 @@ button.red,
   }
 
   .modal-body {
-    border-radius: $br-lg;
+    border-radius: $br-xl;
     width: 330px;
     background-color: rgba($white, 1);
     border-bottom: $border;
@@ -720,6 +720,12 @@ button.red,
       display: flex;
       flex-direction: column;
       gap: $spacing-sm;
+
+      section {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-xs;
+      }
 
       .modal-icon {
         width: 60px;

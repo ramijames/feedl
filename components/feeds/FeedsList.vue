@@ -57,14 +57,6 @@ async function getItunesCategories(feed) {
   }
 }
 
-onMounted(async () => {
-  try {
-    await getFeeds()
-  } catch (error) {
-    console.error('Failed to get feeds:', error)
-  }
-})
-
 </script>
 
 <style scoped lang="scss">
