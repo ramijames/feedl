@@ -8,7 +8,7 @@
         <input type="text" v-model="rssFeedUrl" placeholder="Feed URL" class="form-input">
         <button @click="handleAddFeed" class="primary">Add Feed</button>
       </section> -->
-      <FeedsList :feeds="feeds" @delete="deleteFeed" />
+      <FeedsList :feeds="feeds" @delete="deleteFeed" @refresh="getFeeds" />
     </section>
   </NuxtLayout>
 </template>

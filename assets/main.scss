@@ -611,12 +611,10 @@ button,
     border: none;
     outline: none;
     text-wrap: nowrap;
+    cursor: pointer;
 
-    &:hover {
-        background: rgba($black, 0.075);
-    }
-
-    &:active {
+    &:active,
+    &:focus {
         background: rgba($black, 0.1);
     }
 
@@ -634,6 +632,11 @@ button.primary,
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.17) 0%, rgba(255, 255, 255, 0) 100%), #007AFF;
   box-shadow: 0px 1px 2.5px rgba(0, 122, 255, 0.24), 0px 0px 0px 0.5px rgba(0, 122, 255, 0.12);
   color: $white;
+
+  &:active,
+  &:focus,{
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.17) 0%, rgba(255, 255, 255, 0) 100%), #0061ca;
+  }
 }
 
 button.red,
@@ -648,6 +651,128 @@ button.red,
 
   @media (max-width: $breakpoint-lg) {
     padding: $spacing-md;
+  }
+}
+
+/* Modal */
+
+@keyframes scaleBounce {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.005);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+
+  .shade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($brand, 0);
+  }
+
+  &.visible {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .modal-body {
+    border-radius: $br-lg;
+    width: 330px;
+    background-color: rgba($white, 1);
+    border-bottom: $border;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+    align-items: center;
+    box-shadow: $shadow-primary, $shadow-inner;
+    overflow: hidden;
+
+    &.visible {
+      animation: scaleBounce 0.4s both 0.2s;
+    }
+
+    .modal-content {
+      padding: $spacing-md;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-sm;
+
+      .modal-icon {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto $spacing-sm;
+        background-color: rgba($brand, 0.1);
+        border-radius: $br-lg;
+        box-shadow: $shadow-icon;
+        outline: 2px solid $white;
+        outline-offset: -2px;
+        overflow: hidden;
+      }
+
+      h1, h2, h3, h4, h5, p {
+        margin: 0;
+      }
+
+      .modal-input {
+        width: 100%;
+        text-align: center;
+        margin: 0;
+      }
+    }
+
+    .modal-buttons {
+      display: flex;
+      flex-direction: row;
+      height: 54px;
+      padding: 0;
+      width: 100%;
+      border-top: $border;
+      overflow: hidden;
+
+      .modal-button {
+        width: 50%;
+        box-shadow: none;
+        height: 54px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        color: rgba($black, 0.85);
+
+        &.preferred {
+          color: $brand;
+        }
+
+        &:first-child {
+          border-right: $border;
+        }
+      }
+    }
   }
 }
 

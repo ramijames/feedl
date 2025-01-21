@@ -20,7 +20,6 @@ const props = defineProps({
   feeds: Object
 })
 
-const emit = defineEmits(['delete'])
 const categories = ref([])
 const owner = ref('')
 
