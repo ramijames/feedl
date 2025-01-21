@@ -89,6 +89,10 @@ ipcMain.handle('feed:all', async (event) => {
   return await Feed.findAll();
 });
 
+ipcMain.handle('feed:get', async (event, id) => {
+  return await Feed.findByPk(id);
+});
+
 ipcMain.handle('feed:delete', async (event, id) => {
   return await Feed.destroy({ where: { id } });
 });
