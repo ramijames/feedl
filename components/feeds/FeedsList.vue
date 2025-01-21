@@ -1,5 +1,5 @@
 <template>
-  <div v-if="feeds" class="feeds-list">
+  <div v-if="feeds" class="feeds-list sheet-content">
     <h1>My Podcasts</h1>
     <section class="feeds-list-content" v-if="feeds.length > 0">
       <FeedCard v-for="feed in props.feeds" :feed="feed" />

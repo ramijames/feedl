@@ -1,5 +1,8 @@
 <template>
   <NuxtLayout>
+    <section class="tool-bar">
+      <button @click="handleOpenModal" class="primary">Add RSS Feed</button>
+    </section>
     <section class="feeds">
       <!-- <section class="add-feed">
         <input type="text" v-model="rssFeedUrl" placeholder="Feed URL" class="form-input">
@@ -11,6 +14,10 @@
 </template>
 
 <script setup>
+
+import { useModal } from '~/stores/modal'
+
+const modal = useModal()
 
 definePageMeta({
   layout: 'default'
@@ -48,6 +55,11 @@ async function handleAddFeed() {
     console.error('Failed to add feed:', error)
     loading.value = false
   }
+}
+
+function handleOpenModal() {
+  modal.toggleVisibility()
+  modal.setContent('AddRssFeed')
 }
 
 async function getFeeds() {

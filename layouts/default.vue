@@ -4,6 +4,7 @@
     <section class="content">
       <slot />
     </section>
+    <Modal />
   </main>
 </template>
 
@@ -24,15 +25,10 @@ import Sidebar from '~/components/Sidebar.vue'
   overflow: hidden;
 
   .content {
-    padding: $spacing-lg;
     flex: 1;
     background: $brand-bg;
     overflow-y: auto;
     transition: padding .35s ease;
-
-    @media (max-width: $breakpoint-lg) {
-      padding: $spacing-md;
-    }
   }
 }
 

@@ -631,12 +631,36 @@ button,
 
 button.primary,
 .button.primary {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.17) 0%, rgba(255, 255, 255, 0) 100%), #007AFF;
-    box-shadow: 0px 1px 2.5px rgba(0, 122, 255, 0.24), 0px 0px 0px 0.5px rgba(0, 122, 255, 0.12);
-    color: $white;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.17) 0%, rgba(255, 255, 255, 0) 100%), #007AFF;
+  box-shadow: 0px 1px 2.5px rgba(0, 122, 255, 0.24), 0px 0px 0px 0.5px rgba(0, 122, 255, 0.12);
+  color: $white;
 }
 
 button.red,
 .button.red {
-    color: $accent-red;
+  color: $accent-red;
+}
+
+/* Generics */
+
+.sheet-content {
+  padding: $spacing-lg;
+
+  @media (max-width: $breakpoint-lg) {
+    padding: $spacing-md;
+  }
+}
+
+/* Toolbar */
+
+.tool-bar {
+  padding: $spacing-sm $spacing-md;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  background: rgba($white, 0.5);
+  backdrop-filter: blur(20px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
