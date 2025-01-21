@@ -10,9 +10,15 @@ const __dirname = path.dirname(__filename)
 
 let mainWindow
 
+app.name = 'Feedl';
+
 app.on('ready', async () => {
 
   console.log('show me:', __dirname, __filename);
+
+  if (process.platform === 'darwin') {
+    app.dock.setIcon(path.join(__dirname, '../public/icons/png/512x512.png'))
+  }
 
   try {
     await sequelize.authenticate();
@@ -27,6 +33,7 @@ app.on('ready', async () => {
   mainWindow = new BrowserWindow({
     width: 1180,
     height: 920,
+    icon: path.join(__dirname, '../public/icons/png/512x512.png'),
     transparent: true,
     backgroundColor: '#00000000',
     webPreferences: {
@@ -38,6 +45,7 @@ app.on('ready', async () => {
     titleBarStyle: 'hidden',
     vibrancy: 'under-window',
     visualEffectState: 'active',
+    title: 'Feedl',
   });
 
   console.log(mainWindow)

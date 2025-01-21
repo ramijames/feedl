@@ -21,3 +21,9 @@ npm run electron:build  # Build the macOS app
 ```
 
 The .dmg file will be in the dist_electron folder.
+
+## Building the icons from source
+
+```sh
+npm run generate-icons
+```

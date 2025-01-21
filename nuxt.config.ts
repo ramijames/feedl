@@ -5,5 +5,10 @@ export default defineNuxtConfig({
   modules: ['@pinia/nuxt'],
   css: [
     '@/assets/main.scss'
-  ]
+  ],
+  app: {
+    head: {
+      title: 'Feedl'
+    }
+  }
 })

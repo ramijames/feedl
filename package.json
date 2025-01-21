@@ -1,5 +1,10 @@
 {
-  "name": "Feedl",
+  "productName": "Feedl",
+  "appId": "com.feedl.app",
+  "mac": {
+    "icon": "public/icons/mac/icon.icns",
+    "category": "public.app-category.utilities"
+  },
   "private": true,
   "type": "module",
   "main": "electron/main.js",
@@ -13,7 +18,8 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "electron:dev": "electron .",
-    "electron:build": "electron-builder"
+    "electron:build": "electron-builder",
+    "generate-icons": "electron-icon-builder -i=./assets/icon.png -o=./public/"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
@@ -37,5 +43,17 @@
     "nuxt-electron": "^0.7.0",
     "vite-plugin-electron": "^0.29.0",
     "vite-plugin-electron-renderer": "^0.14.6"
+  },
+  "build": {
+    "appId": "com.feedl.app",
+    "mac": {
+      "icon": "public/icons/mac/icon.icns"
+    },
+    "win": {
+      "icon": "public/icons/win/icon.ico"
+    },
+    "linux": {
+      "icon": "public/icons/png/icon.png"
+    }
   }
 }
