@@ -1,5 +1,5 @@
 <template>
-  <main id="feed-loom">
+  <main id="feedl">
     <NuxtPage />
   </main>
 </template>
@@ -8,7 +8,7 @@
 
 @use 'assets/variables' as *;
 
-#feed-loom {
+#feedl {
   height: 100%;
 }
 

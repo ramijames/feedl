@@ -1,5 +1,5 @@
-appId: com.ramijames.feedloom
-productName: FeedLoom
+appId: com.ramijames.feedl
+productName: Feedl
 directories:
   output: dist_electron
 files:

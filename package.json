@@ -1,5 +1,5 @@
 {
-  "name": "Feed Loom",
+  "name": "Feedl",
   "private": true,
   "type": "module",
   "main": "electron/main.js",

@@ -1,6 +1,6 @@
-# Feed Loom
+# Feedl
 
-Feed Loom is a way to manage the bulk downloading of MP3s for Podcasts via RSS feeds. You can then copy these wherever you'd like so that you can listen to them offline.
+Feedl is a way to manage the bulk downloading of MP3s for Podcasts via RSS feeds. You can then copy these wherever you'd like so that you can listen to them offline.
 
 ## Running the app locally
 
