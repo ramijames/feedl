@@ -19,15 +19,14 @@ import Sidebar from '~/components/Sidebar.vue'
 
 .default-layout {
   display: grid;
-  grid-template-columns: 220px 1fr;
-  // background-color: #E6E6E6;
+  grid-template-columns: 280px 1fr;
   height: 100%;
   overflow: hidden;
 
   .content {
     padding: $spacing-lg;
     flex: 1;
-    background: $white;
+    background: $brand-bg;
     overflow-y: auto;
     transition: padding .35s ease;
 

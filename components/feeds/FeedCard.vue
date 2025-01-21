@@ -1,12 +1,9 @@
 <template>
   <nuxt-link class="single-feed" :to="`/feed/${feed.dataValues.id}`">
     <template v-if="getFeedImage(feed)">
-      <img :src="getFeedImage(feed)" :alt="feed.dataValues.title" class="bg-image" />
+      <img :src="getFeedImage(feed)" :alt="feed.dataValues.title" class="podcast-image" />
     </template>
     <section class="feed-content">
-      <template v-if="getFeedImage(feed)">
-        <img :src="getFeedImage(feed)" :alt="feed.dataValues.title" class="podcast-image" />
-      </template>
       <section class="feed-details">
         <h2>{{ feed.dataValues.title }}</h2>
         <p>from {{ owner.name }}</p>
@@ -16,7 +13,7 @@
         </div>
       </section>
     </section>
-    <button @click="handleDelete(feed.dataValues.id)" class="red">Delete</button>
+    <!-- <button @click="handleDelete(feed.dataValues.id)" class="red">Delete</button> -->
   </nuxt-link> 
 </template>
 
@@ -79,27 +76,17 @@ onMounted(() => {
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-  padding: $spacing-md;
   width: 100%;
-  border-radius: $br-xl;
-  background-color: rgba($black, 0.025);
-  height: 200px;
   position: relative;
   overflow: hidden;
   text-decoration: none;
-  
-  .bg-image {
-    display: none;
-    // width: calc(100% + 40px);
-    // height: auto;
-    // object-fit: cover;
-    // border-radius: $br-lg;
-    // position: absolute;
-    // top:-20px;
-    // left: -20px;
-    // z-index: 0;
-    // filter: blur(10px);
-    // mask-image: linear-gradient(45deg, rgba($black, 0.25) 0%, rgba($black, 0) 55%);
+  gap: $spacing-md;
+
+  .podcast-image {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: $br-xl;
   }
 
   .feed-content {
@@ -110,13 +97,6 @@ onMounted(() => {
     z-index: 1;
     position: relative;
     color: $black;
-
-    .podcast-image {
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-      border-radius: $br-lg;
-    }
 
     .feed-details { 
       display: flex;

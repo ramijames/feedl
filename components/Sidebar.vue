@@ -1,8 +1,9 @@
 <template>
   <div class="sidebar">
+    <img src="@/assets/feedloom-logo.png" alt="FeedLoom Logo" class="feedloom-logo" />
     <nuxt-link to="/">
       <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M14.1463 8.82406L14.8793 8.97205C15.3146 9.05992 15.6398 9.42431 15.6777 9.86675L15.9379 12.8973C15.9884 13.4864 15.5196 13.9905 14.9284 13.9827L13.3183 13.9615L12.5922 5.50212C12.4779 4.17038 11.4589 3.0941 10.1354 2.9072V2.9072C8.7034 2.70499 7.24422 2.83023 5.86766 3.27352V3.27352C4.59536 3.68323 3.77469 4.91741 3.889 6.24915L4.61511 14.7085L3.11824 14.9926C2.53611 15.1031 1.98613 14.686 1.93546 14.0957L1.67453 11.0558C1.63708 10.6195 1.88789 10.2095 2.29343 10.0442L2.92375 9.78734" stroke="black" stroke-linecap="round"/>
+        <path d="M2 9.18182V9C2 5.134 5.13401 2 9 2V2C12.866 2 16 5.13401 16 9V9.18182M2 9.18182V13.9C2 15.0598 2.9402 16 4.1 16V16C5.2598 16 6.2 15.0598 6.2 13.9V12.5909C6.2 10.7081 4.6737 9.18182 2.79091 9.18182H2ZM16 9.18182V13.9C16 15.0598 15.0598 16 13.9 16V16C12.7402 16 11.8 15.0598 11.8 13.9V12.5909C11.8 10.7081 13.3263 9.18182 15.2091 9.18182H16Z" stroke="#E97430" stroke-width="1.5" stroke-linecap="round"/>
       </svg>
       My Podcasts
     </nuxt-link>
@@ -20,39 +21,45 @@
 .sidebar {
   display: flex;
   flex-direction: column;
-  padding: $spacing-lg $spacing-sm;
+  padding: $spacing-lg $spacing-md;
   height: 100%;
   overflow-y: auto;
-  background: rgba(255, 255, 255, 0.1); // Adjust opacity as needed
+  background: rgba(#F1F0F5, 1); // Adjust opacity as needed
   backdrop-filter: blur(4px);
   -webkit-app-region: drag;
   app-region: drag;
+
+  .feedloom-logo {
+    width: 100px;
+    margin-bottom: $spacing-md;
+  }
 
   a {
     padding: 9px;
     border-radius: $br-md;
     margin-bottom: $spacing-sm;
     text-decoration: none;
-    color: rgba($black, .85);
+    color: rgba($brand, .85);
     transition: background-color .35s ease;
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: $spacing-xxs;
     font-size: $font-size-md;
+    font-weight: 700;
     -webkit-app-region: no-drag; // Makes region draggable
     app-region: no-drag;
 
     svg {
       path {
-        stroke: rgba($accent-blue, .85);
+        stroke: $brand;
       }
     }
 
     &.active,
     &.router-link-active,
     &.router-link-exact-active {
-      background-color: rgba($black, .05);
+      background-color: rgba($white, .95);
     }
   }
 }

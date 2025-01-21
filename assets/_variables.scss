@@ -1,10 +1,11 @@
 /* Colors */
-$black: #000000;
+$black: #3A3940;
 $white: #ffffff;
 
-$brand: #007AFF;
-$brand-dark: #0168d7;
-$brand-light: #288ffd;
+$brand: #693EEE;
+$brand-dark: #E0DEE6;
+$brand-light: #F1F0F5;
+$brand-bg: #F8F7FA;
 
   /* Accents */
   $accent-red: #FF3B30;
@@ -45,7 +46,7 @@ $brand-light: #288ffd;
   $fill-tertiary-dark: rgba($white, 0.05);
   $fill-quaternary-dark: rgba($white, 0.03);
   $fill-quinary-dark: rgba($white, 0.015);
-  $fill-sheet: #DDDDDD;
+  $fill-sheet: $brand-light;
 
 /* Borders */
 $border: 1px solid rgba($black, 0.1);

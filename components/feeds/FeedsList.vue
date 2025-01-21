@@ -96,8 +96,8 @@ onMounted(async () => {
 
   .feeds-list-content {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    gap: $spacing-md;
+    grid-template-columns: repeat(auto-fill, 220px);
+    gap: $spacing-lg;
   }
 
   .no-feeds {

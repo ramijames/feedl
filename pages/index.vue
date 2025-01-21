@@ -1,10 +1,10 @@
 <template>
   <NuxtLayout>
     <section class="feeds">
-      <section class="add-feed">
+      <!-- <section class="add-feed">
         <input type="text" v-model="rssFeedUrl" placeholder="Feed URL" class="form-input">
         <button @click="handleAddFeed" class="primary">Add Feed</button>
-      </section>
+      </section> -->
       <FeedsList :feeds="feeds" @delete="deleteFeed" />
     </section>
   </NuxtLayout>
