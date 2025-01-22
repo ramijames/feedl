@@ -4,11 +4,15 @@
       <img :src="getFeedImage(feed)" :alt="feed.dataValues.title" class="podcast-image" />
     </template>
     <section class="feed-content">
+      <template v-if="getFeedImage(feed)">
+        <img :src="getFeedImage(feed)" :alt="feed.dataValues.title" class="bg-image" />
+      </template>
       <section class="feed-details">
         <h3>{{ feed.dataValues.title }}</h3>
-        <p>from {{ owner.name }}</p>
+        <!-- <p>from {{ owner.name }}</p> -->
         <div class="categories">
-          <span v-for="category in categories" class="category">{{ category }}</span>
+          <!-- Limit to two categories -->
+          <span v-for="category in limitedCategories" class="category">{{ category }}</span>
         </div>
       </section>
     </section>
@@ -60,6 +64,11 @@ async function getCategories(feed) {
   }
 }
 
+const limitedCategories = computed(() => {
+  if (!categories.value || !Array.isArray(categories.value)) return []
+  return categories.value.slice(0, 2)
+})
+
 onMounted(() => {
   getItunesName(props.feed)
   getCategories(props.feed)
@@ -80,13 +89,15 @@ onMounted(() => {
   position: relative;
   overflow: hidden;
   text-decoration: none;
-  gap: $spacing-sm;
 
   .podcast-image {
-    width: 220px;
-    height: 220px;
+    width: 260px;
+    height: 260px;
     object-fit: cover;
-    border-radius: $br-xl;
+    border-radius: $br-xl $br-xl 0 0;
+    mask-image: linear-gradient(to bottom, rgba($black, 1) 220px, rgba($black, 0));
+    margin-bottom: -40px;
+    z-index: 1;
   }
 
   .feed-content {
@@ -94,9 +105,25 @@ onMounted(() => {
     flex-direction: row;
     gap: $spacing-md;
     width: 100%;
-    z-index: 1;
+    z-index: 0;
     position: relative;
     color: $black;
+    border-radius: $br-xl;
+    overflow: hidden;
+    background: $accent-gray;
+    padding-top: $spacing-md;
+
+    .bg-image {
+      width: 1000px;
+      height: 1000px;
+      object-fit: cover;
+      position: absolute;
+      top: -200px;
+      left: -200px;
+      z-index: -1;
+      filter: blur(200px) brightness(0.7);
+      mix-blend-mode: overlay;
+    }
 
     .feed-details { 
       display: flex;
@@ -104,31 +131,46 @@ onMounted(() => {
       justify-content: flex-start;
       flex-direction: column;
       gap: $spacing-xxs;
+      position: relative;
+      padding: $spacing-md;
+      z-index: 1;
+      width: calc(100%);
 
       .categories {
         font-size: $font-size-xs;
         display: flex;
         gap: $spacing-xxs;
         margin-top: $spacing-xs;
+        width: 100%;
+        flex-wrap: wrap;
+        mix-blend-mode: overlay;
 
         .category {
-          color: rgba($brand, 0.5);
-          background: rgba($brand, 0.05);
+          color: rgba($white, 0.85);
+          background: rgba(black, 0.25);
           padding: 3px 6px;
           border-radius: $br-md;
+          text-wrap: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
         }
       }
     }
 
     h3 {
       margin: 0;
-      color: rgba($black, 0.85);
+      color: $white;
+      text-wrap: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      width: 100%;
     }
 
     p {
       font-size: $font-size-xs;
-      color: rgba($black, 0.35);
+      color: rgba($white, 0.35);
       margin: 0;
+      color: $white;
     }
   }
 }

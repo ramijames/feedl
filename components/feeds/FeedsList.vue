@@ -67,8 +67,8 @@ async function getItunesCategories(feed) {
 
   .feeds-list-content {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 220px);
-    gap: $spacing-lg;
+    grid-template-columns: repeat(auto-fill, 260px);
+    gap: $spacing-sm;
   }
 
   .no-feeds {
